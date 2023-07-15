@@ -23,5 +23,6 @@
             </StackPanel>
         </StackPanel>
         <TextBlock x:Name="TextBlock1" TextWrapping="Wrap" Text="TextBlock"/>
+        <DataGrid x:Name="dataGrid" Height="100" d:ItemsSource="{d:SampleData ItemCount=5}"/>
     </StackPanel>
 </Window>
