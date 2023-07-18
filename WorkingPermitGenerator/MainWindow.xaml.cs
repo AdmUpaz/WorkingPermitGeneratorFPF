@@ -33,6 +33,28 @@ namespace WorkingPermitGenerator
             string[] monthNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
             monthNames.Where(m => !string.IsNullOrWhiteSpace(m)).Select(m => char.ToUpper(m[0]) + m[1..]).Select(m => this.comboBoxMounth.Items.Add(m)).ToArray();
             this.comboBoxMounth.SelectedIndex = DateTime.Now.Month - 1;
+            Worker[] workers = new Worker[] {
+                new Worker() { FIO = "First", TN = 1234, D1 = Shifts.S0, D2 = Shifts.S3 },
+                new Worker() { FIO = "Second", TN = 5678, D1 = Shifts.S1, D2 = Shifts.S2 }
+            };
+            FillWorkingDayTable(workers);
+        }
+
+        private void FillWorkingDayTable(Worker[] workers)
+        {
+            this.dataGridWorkingDayTable.ItemsSource = workers;
+            foreach (DataGridColumn col in this.dataGridWorkingDayTable.Columns)
+            {
+                if (col.Header is string hName && hName.StartsWith("D"))
+                {
+                    col.Header = hName[1..];
+
+
+
+                }
+                //else
+                //{ throw new Exception("Имя заголовка столбца имеет неверный формат"); }
+            }
         }
 
         private void buttonsYear_Click(object sender, RoutedEventArgs e)

@@ -9,8 +9,8 @@
     <Window.Resources>
         <Color x:Key="NumUpDownBorderColor">#FF707070</Color>
     </Window.Resources>
-    <StackPanel >
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,5">
+    <DockPanel >
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,5" DockPanel.Dock="Top">
             <TextBlock TextWrapping="Wrap" Text="Месяц:" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <ComboBox x:Name="comboBoxMounth" Width="120" Margin="0,0,15,0"/>
             <TextBlock TextWrapping="Wrap" Text="Год:" VerticalAlignment="Center" Margin="0,0,5,0"/>
@@ -22,11 +22,14 @@
                 <RepeatButton x:Name="buttonNextYear" Content="&gt;" Width="NaN" HorizontalAlignment="Center" Click="buttonsYear_Click" VerticalContentAlignment="Top" />
             </StackPanel>
         </StackPanel>
-        <DataGrid x:Name="dataGridWorkingDayTable" Height="NaN"  d:ItemsSource="{d:SampleData ItemCount=5}">
+        <Grid Width="100" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="50"/>
+        <DataGrid x:Name="dataGridWorkingDayTable" Height="NaN">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО"/>
                 <DataGridTextColumn Header="т.н."/>
             </DataGrid.Columns>
         </DataGrid>
-    </StackPanel>
+    </DockPanel>
 </Window>
+
+<!--d:ItemsSource="{d:SampleData ItemCount=5}"-->
