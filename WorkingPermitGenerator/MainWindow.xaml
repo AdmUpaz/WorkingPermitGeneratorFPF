@@ -12,7 +12,7 @@
     <DockPanel >
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,5" DockPanel.Dock="Top">
             <TextBlock TextWrapping="Wrap" Text="Месяц:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <ComboBox x:Name="comboBoxMounth" Width="120" Margin="0,0,15,0"/>
+            <ComboBox x:Name="comboBoxMounth" Width="120" Margin="0,0,15,0" />
             <TextBlock TextWrapping="Wrap" Text="Год:" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <RepeatButton x:Name="buttonPrevYear" Content="&lt;" Width="NaN" HorizontalAlignment="Center" Click="buttonsYear_Click" VerticalContentAlignment="Top"/>
@@ -22,8 +22,15 @@
                 <RepeatButton x:Name="buttonNextYear" Content="&gt;" Width="NaN" HorizontalAlignment="Center" Click="buttonsYear_Click" VerticalContentAlignment="Top" />
             </StackPanel>
         </StackPanel>
-        <Grid Width="100" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="50"/>
-        <DataGrid x:Name="dataGridWorkingDayTable" Height="NaN">
+        <Grid Width="100" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="46"/>
+        <Menu x:Name="menu" DockPanel.Dock="Bottom" Height="30">
+            <ComboBoxItem/>
+            <TabItem/>
+            <MenuItem/>
+            <ComboBoxItem/>
+            <ListBoxItem/>
+        </Menu>
+        <DataGrid x:Name="dataGridWorkingDayTable" VerticalGridLinesBrush="LightGray" HorizontalGridLinesBrush="Gray" DockPanel.Dock="Top" VerticalContentAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО"/>
                 <DataGridTextColumn Header="т.н."/>

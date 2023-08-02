@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -34,26 +35,33 @@ namespace WorkingPermitGenerator
             monthNames.Where(m => !string.IsNullOrWhiteSpace(m)).Select(m => char.ToUpper(m[0]) + m[1..]).Select(m => this.comboBoxMounth.Items.Add(m)).ToArray();
             this.comboBoxMounth.SelectedIndex = DateTime.Now.Month - 1;
             Worker[] workers = new Worker[] {
-                new Worker() { FIO = "First", TN = 1234, D1 = Shifts.S0, D2 = Shifts.S3 },
-                new Worker() { FIO = "Second", TN = 5678, D1 = Shifts.S1, D2 = Shifts.S2 }
+                new Worker() { FIO = "First", TN = 1234, D01 = Shifts.S0, D02 = Shifts.S3 },
+                new Worker() { FIO = "Second", TN = 5678, D01 = Shifts.S1, D02 = Shifts.S2 }
             };
-            FillWorkingDayTable(workers);
+            ObservableCollection<Worker> workersObservable = new ObservableCollection<Worker>(workers);
+            FillWorkingDayTable(workersObservable);
         }
 
-        private void FillWorkingDayTable(Worker[] workers)
+        private void FillWorkingDayTable(ObservableCollection<Worker> workers)
         {
+            this.dataGridWorkingDayTable.Items.Clear();
             this.dataGridWorkingDayTable.ItemsSource = workers;
             foreach (DataGridColumn col in this.dataGridWorkingDayTable.Columns)
             {
-                if (col.Header is string hName && hName.StartsWith("D"))
+                if (col.Header is string hName)
                 {
-                    col.Header = hName[1..];
-
-
-
+                    if (hName.ToLowerInvariant() == "rowguid")
+                    {
+                        col.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    if (hName.StartsWith("D"))
+                    {
+                        col.Header = hName[1..];
+                    }
                 }
-                //else
-                //{ throw new Exception("Имя заголовка столбца имеет неверный формат"); }
+                else
+                { throw new Exception("Имя заголовка столбца имеет неверный формат"); }
             }
         }
 
