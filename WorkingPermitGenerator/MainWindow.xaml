@@ -29,6 +29,7 @@
             <MenuItem/>
             <ComboBoxItem/>
             <ListBoxItem/>
+            
         </Menu>
         <DataGrid x:Name="dataGridWorkingDayTable" VerticalGridLinesBrush="LightGray" HorizontalGridLinesBrush="Gray" DockPanel.Dock="Top" VerticalContentAlignment="Stretch">
             <DataGrid.Columns>
