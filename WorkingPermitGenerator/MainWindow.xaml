@@ -22,18 +22,14 @@
                 <RepeatButton x:Name="buttonNextYear" Content="&gt;" Width="NaN" HorizontalAlignment="Center" Click="buttonsYear_Click" VerticalContentAlignment="Top" />
             </StackPanel>
         </StackPanel>
-        <Menu x:Name="menu" DockPanel.Dock="Bottom" Height="30">
-            <ComboBoxItem Content="qwe"/>
-            <TabItem Header="qwerty">
-                <ComboBoxItem Content="qwe"/>
-            </TabItem>
-            <MenuItem Header="ert">
+        <Menu x:Name="mainMenu" DockPanel.Dock="Bottom" Height="30">
+            <MenuItem Header="Файл">
                 <Button Content="qwe0"/>
+                <MenuItem/>
+                <RibbonSplitMenuItem/>
+                <RibbonMenuItem/>
                 <Button Content="qwe1"/>
             </MenuItem>
-            <ComboBoxItem Content="cvb"/>
-            <ListBoxItem Content="dfg"/>
-
         </Menu>
         <DataGrid x:Name="dataGridWorkingDayTable" VerticalGridLinesBrush="LightGray" HorizontalGridLinesBrush="Gray" DockPanel.Dock="Top" VerticalContentAlignment="Stretch">
             <DataGrid.Columns>
